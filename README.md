@@ -5,6 +5,11 @@ It is a command-line program, written in C++ language, that generates combinatio
 
 How to use CCG program:
   Compilation:
+  for linux user
+  
+    g++ src/ccg.cpp -std=c++11 -o debug/ccg.exe
+    
+  for windows user
   
     g++ src\ccg.cpp -std=c++11 -o debug\ccg.exe
   
