@@ -8,20 +8,14 @@ How to use CCG program:
   for linux user
   
     g++ ./src/ccg.cpp -std=c++11 -o ./debug/ccg
-    
-  for windows user
-  
-    g++ .\src\ccg.cpp -std=c++11 -o .\debug\ccg.exe
-    
-
+      
   Run from command-line:
     for linux user
     
       ./debug/ccg
     
-    for windows user
-    
-      .\degub\ccg
+  Note:
+    Widows user should user '\' instead of '/'.
   
   Help:
     read the man/rccg_manual.txt
