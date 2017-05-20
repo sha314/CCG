@@ -18,4 +18,4 @@ How to use CCG program:
     Widows user should user '\\' instead of '/'.
   
   Help:
-    read the man/rccg_manual.txt
+    read the manuals/rccg_manual.txt
