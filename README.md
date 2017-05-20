@@ -17,11 +17,11 @@ How to use CCG program:
   Run from command-line:
     for linux user
     
-    ./debug/ccg
+      ./debug/ccg
     
     for windows user
     
-    .\degub\ccg
+      .\degub\ccg
   
   Help:
     read the man/rccg_manual.txt
