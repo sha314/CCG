@@ -15,7 +15,7 @@ How to use CCG program:
       ./debug/ccg
     
   Note:
-    Widows user should user '\' instead of '/'.
+    Widows user should user '\\' instead of '/'.
   
   Help:
     read the man/rccg_manual.txt
