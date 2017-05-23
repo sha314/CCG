@@ -7,12 +7,12 @@ How to use CCG program:
   Compilation:
   for linux user
   
-    g++ ./src/ccg.cpp -std=c++11 -o ./debug/ccg
+    cmake . && make
       
   Run from command-line:
     for linux user
     
-      ./debug/ccg
+      ./bin/ccg
     
   Note:
     Widows user should user '\\' instead of '/'.
