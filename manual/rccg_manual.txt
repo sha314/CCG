@@ -57,3 +57,4 @@ Exit status:
     2  File exists.
     3  Invalid file name or file name is not given.
     4  Permission denied to create new file.
+    5  Invalid character set
