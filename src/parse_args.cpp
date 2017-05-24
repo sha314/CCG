@@ -1,22 +1,72 @@
 
 #include "parse_args.h"
 #include "flags.h"
+
 #include <iostream>
 #include <cstring>
 
+int char_to_int(char c){
+    switch (c) {
+        case '0':
+            return 0;
+        case '1':
+            return 1;
+        case '2':
+            return 2;
+        case '3':
+            return 3;
+        case '4':
+            return 4;
+        case '5':
+            return 5;
+        case '6':
+            return 6;
+        case '7':
+            return 7;
+        case '8':
+            return 8;
+        case '9':
+            return 9;
+        default:
+            return -999;
+    }
+}
 
 //non-inclusive funciton
-const char * substring(const char * chs, int &begin, char end){
-    int l = strlen(chs);
-    char * c;
-    int k=0;
-    for(; begin<l ; begin++){
-        if(chs[begin] == end)
-            break;
-        c[k++] = chs[begin];
+int str_to_int(const char * chs, int &begin, char end){
+    int k=0, i=0, p=1;
+    int l = begin;
+    while(chs[begin] != end){
+        begin++;
     }
-    return c;
+    for(int i=begin-1; i>=l ; i--){
+        // std::cout << chs[i] << " -> " << char_to_int(chs[i]) << std::endl; //debugging
+        k += char_to_int(chs[i])*p;
+        p *= 10;
+    }
+    return k;
 }
+
+// //non-inclusive funciton
+// const char * substring(const char * chs, int &begin, char end){
+//
+//     int l = strlen(chs);
+//     char * c;
+//     int k=0;
+//     for(; begin<l ; begin++){
+//         if(chs[begin] == end)
+//             break;
+//         c[k++] = chs[begin];
+//         // std::cout << chs[begin] << std::endl;
+//     }
+//     // std::cout << "reached " << __LINE__ << std::endl;//////////////////////
+//     // std::cout << "k " << k << std::endl;
+//     char *c2 = new char[k];
+//     strncpy(c2, c, 2);
+//     // std::cout << strncpy(c2, c, 2) << std::endl;
+//     // std::cout << "len <> c2 "<< strlen(c2) << " " << c2 << std::endl ;//////////////
+//     return c2;
+// }
 
 int characterSetLegth(int *arr, int len){
     int l=0;
@@ -38,71 +88,76 @@ const char * get_char_set(const char * chs){
     int k=0, k1=0;
     int chs_len = strlen(chs);
     if(debugging){
-        std::cout << chs << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
-        std::cout << chs_len << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+        std::cout << "char_set " << chs << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+        std::cout << "char_set_len " << chs_len << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
     }
+
     for(int i=0 ; i<chs_len ; i++){
-        if (debugging) {
-            std::cout << chs[i] << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
-        }
         switch (chs[i]){
             case '-':
                 if(debugging)
-                    std::cout << "case -" << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << "case -" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
                 break;
             case ',':
                 if(debugging)
-                    std::cout << "case ," << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << "case ," << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
                 break;
             case '\\':
                 if(debugging)
-                    std::cout << "case \\" << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << "case \\" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
                 chars[k1++] = int(chs[i+1]);
                 i++;
                 break;
             case '[':
-                if(debugging)
-                    std::cout << "case [" << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                if(debugging){
+                    std::cout << "case [" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                }
                 i++;
-                arr[k++] = atoi(substring(chs, i, '-'));
-                if(debugging)
-                    std::cout << arr[k-1] << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                // std::cout << "reached " << __LINE__ << std::endl;//////////////////////
+                // arr[k++] = atoi(substring(chs, i, '-'));
+                arr[k++] = str_to_int(chs, i, '-');
+
                 i++;
-                arr[k++] = atoi(substring(chs, i, ']'));
-                if(debugging)
-                    std::cout << arr[k-1] << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                // arr[k++] = atoi(substring(chs, i, ']'));
+                arr[k++] = str_to_int(chs, i, ']');
+                if(debugging){
+                    std::cout << arr[k-2] << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << arr[k-1] << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                }
                 break;
+
             case '(':
                 if(debugging)
-                    std::cout << "case (" << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << "case (" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
                 i++;
                 arr[k++] = int(chs[i]);
-                if(debugging)
-                    std::cout << arr[k-1] << " -> " << chs[i] << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
                 i += 2;
                 arr[k++] = int(chs[i]);
-                if(debugging)
-                    std::cout << arr[k-1] << " -> " << chs[i] << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                if(debugging){
+                    std::cout << arr[k-2] << " -> " << chs[i] << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << arr[k-1] << " -> " << chs[i] << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                }
                 i++;
                 break;
             default:
                 if(debugging)
-                    std::cout << "default" << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << "default" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
                 chars[k1++] = int(chs[i]);
 
         }
     }
 
     char_set_len = characterSetLegth(arr, k) + k1;
-    if(debugging)
-        std::cout << "char_set_len, k " << char_set_len << ", " << k << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+    if(debugging){
+        std::cout << "char_set_len, k , k1 :" << char_set_len << ", " << k
+            << ", " << k1 <<" ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+    }
     char * char_set = new char[char_set_len];
     if(debugging){
         for(int i=0 ; i<k ; i++){
-            std::cout << i << " -> " << arr[i] << "FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+            std::cout << i << " -> " << arr[i] << std::endl;
         }
     }
-
     //stores char() from each pair of arr array
     int l=0;
     for(int i=0 ; i<k ; i+=2){
@@ -110,12 +165,16 @@ const char * get_char_set(const char * chs){
             char_set[l++] = char(j);
         }
     }
+
     for(int i=0; i<k1; i++){
-        char_set[i+l] = char(chars[i]);
+        char_set[l++] = char(chars[i]);
     }
 
-    // for(int i=0 ; i < char_set_len ; i++){
-    //     std::cout << char_set[i] << ' ';
-    // }
-    return char_set;
+    //ensures that only the relevent characters passes
+    char *c = new char[char_set_len];
+    strncpy(c, char_set, char_set_len);
+    if(debugging){
+        std::cout << "len <space> set " << strlen(c) << " " << c << std::endl;
+    }
+    return c;
 }

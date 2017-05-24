@@ -83,7 +83,6 @@ int main(int argc, char const *argv[]) {
 
             case str2int("-w"):
             case str2int("--width"):
-                cout << "--width" << endl;////////////debugging
                 if (i+1 < argc) {//ensures that argument exists
                     width = atoi(argv[i+1]);
                     i++;
@@ -92,7 +91,6 @@ int main(int argc, char const *argv[]) {
                     cout << "Try \'-h\' argument for help" << endl;
                     return 1;
                 }
-                cout << width << endl;////////////debugging
                 break;
 
             default:
