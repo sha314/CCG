@@ -12,10 +12,14 @@ How to use CCG program:
   Run from command-line:
     for linux user
     
-      ./bin/ccg
+      ./bin/ccg -h
+      ./bin/ccg -w 3 -c "(a-z),[65-90]" -f dummy1 -s
+      ./bin/ccg -w 3 -c "(a-z),[65-90],!@#$" -f dummy -s -t
+      ./bin/ccg -w 3 -c "(a-z),[65-90],!@#$\," -f dummy -s -t
+
     
   Note:
     Widows user should user '\\' instead of '/'.
   
   Help:
-    read the manuals/rccg_manual.txt
+    read the manual/rccg_manual.txt
