@@ -7,15 +7,18 @@ How to use CCG program:
   Compilation:
   for linux user
   
-    g++ ./src/ccg.cpp -std=c++11 -o ./debug/ccg
+    cmake . && make
       
   Run from command-line:
     for linux user
     
-      ./debug/ccg
+      ./bin/ccg.exe -h
+      ./bin/ccg.exe -w 3 -c "(a-z),[65-90]" -f dummy1 -s
+      ./bin/ccg.exe -w 3 -c "(a-z),[65-90],!@#$" -f dummy -s -t
+      ./bin/ccg.exe -w 3 -c "(a-z),[65-90],!@#$\," -f dummy -s -t
     
   Note:
     Widows user should user '\\' instead of '/'.
   
   Help:
-    read the manuals/rccg_manual.txt
+    read the manual/rccg_manual.txt
