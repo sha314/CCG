@@ -1,0 +1,3 @@
+1. write some information about the generated strings in the output file
+2. Combined command
+    "-t -s" to "-ts"

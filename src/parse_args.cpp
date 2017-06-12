@@ -88,29 +88,32 @@ const char * get_char_set(const char * chs){
     int k=0, k1=0;
     int chs_len = strlen(chs);
     if(debugging){
-        std::cout << "char_set " << chs << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
-        std::cout << "char_set_len " << chs_len << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+        std::cout << "function get_char_set() File entered " << " ->FILE:LINE "<<__FILE__  << std::endl;
+        std::cout << "char_set , char_set_len : " << chs << "," << chs_len << " ->LINE " << __LINE__ << std::endl;
     }
 
     for(int i=0 ; i<chs_len ; i++){
         switch (chs[i]){
             case '-':
-                if(debugging)
-                    std::cout << "case -" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                if(debugging){
+                    std::cout << "case \'-\' ->LINE "<< __LINE__ << std::endl;
+                }
                 break;
             case ',':
-                if(debugging)
-                    std::cout << "case ," << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                if(debugging){
+                    std::cout << "case \',\' ->LINE "<< __LINE__ << std::endl;
+                }
                 break;
             case '\\':
-                if(debugging)
-                    std::cout << "case \\" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                if(debugging){
+                    std::cout << "case \'\\\' ->LINE "<< __LINE__ << std::endl;
+                }
                 chars[k1++] = int(chs[i+1]);
                 i++;
                 break;
             case '[':
                 if(debugging){
-                    std::cout << "case [" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << "case \'[\' ->LINE "<< __LINE__ << std::endl;
                 }
                 i++;
                 // std::cout << "reached " << __LINE__ << std::endl;//////////////////////
@@ -121,27 +124,29 @@ const char * get_char_set(const char * chs){
                 // arr[k++] = atoi(substring(chs, i, ']'));
                 arr[k++] = str_to_int(chs, i, ']');
                 if(debugging){
-                    std::cout << arr[k-2] << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
-                    std::cout << arr[k-1] << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << arr[k-2] << " ->LINE "<< __LINE__ << std::endl;
+                    std::cout << arr[k-1] << " ->LINE "<< __LINE__ << std::endl;
                 }
                 break;
 
             case '(':
-                if(debugging)
-                    std::cout << "case (" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                if(debugging){
+                    std::cout << "case \'(\' ->LINE "<< __LINE__ << std::endl;
+                }
                 i++;
                 arr[k++] = int(chs[i]);
                 i += 2;
                 arr[k++] = int(chs[i]);
                 if(debugging){
-                    std::cout << arr[k-2] << " -> " << chs[i] << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
-                    std::cout << arr[k-1] << " -> " << chs[i] << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                    std::cout << arr[k-2] << " ->LINE "<< __LINE__ << std::endl;
+                    std::cout << arr[k-1] << " ->LINE "<< __LINE__ << std::endl;
                 }
                 i++;
                 break;
             default:
-                if(debugging)
-                    std::cout << "default" << " ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+                if(debugging){
+                    std::cout << "default ->LINE " << __LINE__ << std::endl;
+                }
                 chars[k1++] = int(chs[i]);
 
         }
@@ -149,32 +154,38 @@ const char * get_char_set(const char * chs){
 
     char_set_len = characterSetLegth(arr, k) + k1;
     if(debugging){
-        std::cout << "char_set_len, k , k1 :" << char_set_len << ", " << k
-            << ", " << k1 <<" ->FILE:LINE "<<__FILE__ << ":" << __LINE__ << std::endl;
+        std::cout << "char_set_len, k , k1 :" << char_set_len << ", " << k << ", " << k1 <<" ->LINE " << __LINE__ << std::endl;
     }
     char * char_set = new char[char_set_len];
-    if(debugging){
-        for(int i=0 ; i<k ; i++){
-            std::cout << i << " -> " << arr[i] << std::endl;
-        }
-    }
+    // if(debugging){
+    //     for(int i=0 ; i<k ; i++){
+    //         std::cout << i << " -> " << arr[i] << std::endl;
+    //     }
+    // }
     //stores char() from each pair of arr array
+    
     int l=0;
     for(int i=0 ; i<k ; i+=2){
         for(int j=arr[i]; j<= arr[i+1]; j++){
+            // str.append(char(j));/////////////
             char_set[l++] = char(j);
         }
     }
-
     for(int i=0; i<k1; i++){
+        // std::cout << char(chars[i]) << " ";///////////
+        // str.append(char(i));/////////////
         char_set[l++] = char(chars[i]);
     }
-
+    // std::string str(char_set);////////////
+    // std::cout << char_set << std::endl;////////////
+    // std::cout << str.substr(0, char_set_len) << std::endl;////////////
     //ensures that only the relevent characters passes
     char *c = new char[char_set_len];
     strncpy(c, char_set, char_set_len);
     if(debugging){
-        std::cout << "len <space> set " << strlen(c) << " " << c << std::endl;
+        // std::cout << "len : set -> " << strlen(c) << " : " << c << std::endl;
+        std::cout << "function get_char_set() File exiting " << " ->FILE:LINE "<<__FILE__  << std::endl;
     }
     return c;
+    // return str.substr(0, char_set_len).c_str();
 }

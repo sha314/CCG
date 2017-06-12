@@ -48,10 +48,10 @@ RM = /usr/bin/cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/d/Cloud/google.drive.shahnoor3pl@gmail.com/programmingProjects/C++/CCG
+CMAKE_SOURCE_DIR = /cygdrive/d/Cloud/Github/StandSteel/CCG
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/d/Cloud/google.drive.shahnoor3pl@gmail.com/programmingProjects/C++/CCG
+CMAKE_BINARY_DIR = /cygdrive/d/Cloud/Github/StandSteel/CCG
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/Cloud/google.drive.shahnoor3pl@gmail.com/programmingProjects/C++/CCG/CMakeFiles /cygdrive/d/Cloud/google.drive.shahnoor3pl@gmail.com/programmingProjects/C++/CCG/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/Cloud/Github/StandSteel/CCG/CMakeFiles /cygdrive/d/Cloud/Github/StandSteel/CCG/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/Cloud/google.drive.shahnoor3pl@gmail.com/programmingProjects/C++/CCG/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/Cloud/Github/StandSteel/CCG/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

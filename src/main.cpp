@@ -26,13 +26,14 @@ constexpr unsigned int str2int(const char* str, int h=0)
 }
 
 int main(int argc, char const *argv[]) {
-
+    // cout << get_char_set("(a-z),[65-90]") << endl;/////////testing///
     if (argc==1) {
         cout << "No argument found!!!" << endl;
-        help();
+        // help();
+        help2();
         return 0;
     }
-    cout << "Character Combination Generator (CCG)" << endl << endl;
+    // cout << "Character Combination Generator (CCG)" << endl << endl;
 
     //starts parsing arguments
     for(int i=1 ; i < argc ; i++){
@@ -63,7 +64,8 @@ int main(int argc, char const *argv[]) {
 
             case str2int("-h"):
             case str2int("--help"):
-                help();
+                // help();
+                help2();
                 return 0;
                 break;
 
@@ -95,7 +97,8 @@ int main(int argc, char const *argv[]) {
 
             default:
                 cout << "No argument found!!!" << endl;
-                help();
+                // help();
+                help2();
                 return 1;
         }
     }
